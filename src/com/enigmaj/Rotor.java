@@ -1,3 +1,5 @@
+package com.enigmaj;
+
 import java.util.*;
 
 public class Rotor {
@@ -6,6 +8,8 @@ public class Rotor {
 
 	private Map<Character, Character> inverseWiring;
 
+	private RotorProperty rotorProperty; 
+	
 	private int position;
 
 	private int notchPosition;
@@ -21,10 +25,7 @@ public class Rotor {
 	 * @param ringSetting Ring setting as a character ('A'=1, 'B'=2). Internally,
 	 *                    the ring setting is stored as an integer ('A'=0,...,'Z'=25)
 	 */
-	public Rotor( RotorProperty rotorProperty, Character start, Character ringSetting ) {
-
-		start = Character.toUpperCase(start);
-		ringSetting = Character.toUpperCase(ringSetting);
+	public Rotor( RotorProperty rotorProperty ) {
 
 		this.alphabet = new ArrayList<>(Arrays.asList(
 			'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
@@ -41,9 +42,22 @@ public class Rotor {
 			this.inverseWiring.put(entry.getValue(), entry.getKey());
 		}
 
-		this.position = this.alphabet.indexOf(start);
+		this.rotorProperty = rotorProperty;
 		this.notchPosition = this.alphabet.indexOf(rotorProperty.notchPosition());
-		this.ringSetting = this.alphabet.indexOf(ringSetting);
+		this.position = 0;
+		this.ringSetting = 0;
+	}
+	
+	public String name() {
+		return this.rotorProperty.name();
+	}
+	
+	public void setPosition( Character positionCharacter ) {
+		this.position = this.alphabet.indexOf(Character.toUpperCase(positionCharacter));
+	}	
+	
+	public void setRingSetting( Character ringSetting ) {
+		this.ringSetting = this.alphabet.indexOf(Character.toUpperCase(ringSetting));
 	}
 
 	public Character passThrough( Character in ) {

@@ -1,3 +1,4 @@
+package com.enigmaj;
 
 public enum RotorProperty {
 

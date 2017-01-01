@@ -1,3 +1,4 @@
+package com.enigmaj;
 
 public class Enigma {
 

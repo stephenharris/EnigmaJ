@@ -9,10 +9,12 @@ The program currently only supports Enigma I, with the following planned:
 
 It does not provide a user interface, but a simple API for encrypting messages:
 
-	// Rotors: I, II, III with inital setting of AAZ and ring setting of 1 foreach rotor
-    Rotor left = new Rotor( RotorProperty.I, 'A', 'A' );
-    Rotor middle = new Rotor( RotorProperty.II, 'A', 'A' );
-    Rotor right = new Rotor( RotorProperty.III, 'Z', 'A' );
+	// Rotors: I, II, III with initIal setting of AAZ and ring setting of 2 for the left rotor
+    Rotor left = new Rotor( RotorProperty.I);
+    left.setRingSetting( 'B' );
+    Rotor middle = new Rotor( RotorProperty.II);
+    Rotor right = new Rotor( RotorProperty.III);
+    right.setPosition( 'Z' );
     
     PlugBoard plugBoard = new PlugBoard( "EN IG MA" );
     

@@ -1,3 +1,5 @@
+package com.enigmaj;
+
 import java.util.*;
 
 public class PlugBoard {

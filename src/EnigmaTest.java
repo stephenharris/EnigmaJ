@@ -1,12 +1,20 @@
 import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
+
+import com.enigmaj.Enigma;
+import com.enigmaj.PlugBoard;
+import com.enigmaj.Reflector;
+import com.enigmaj.Rotor;
+import com.enigmaj.RotorProperty;
 
 public class EnigmaTest {
   @Test
   public void testWithoutRingSetting() {
-	  Rotor rotor1 = new Rotor( RotorProperty.I, 'A', 'A' );
-	  Rotor rotor2 = new Rotor( RotorProperty.II, 'A', 'A' );
-	  Rotor rotor3 = new Rotor( RotorProperty.III, 'Z', 'A' );
+	  Rotor rotor1 = new Rotor( RotorProperty.I );
+	  Rotor rotor2 = new Rotor( RotorProperty.II );
+	  Rotor rotor3 = new Rotor( RotorProperty.III );
+	  rotor3.setPosition('Z');
 	  PlugBoard plugBoard = new PlugBoard( "" );
 	  Enigma enigma = new Enigma( rotor1, rotor2, rotor3, plugBoard, Reflector.B );
 	  
@@ -15,9 +23,15 @@ public class EnigmaTest {
   
   @Test
   public void testRotorStepsWithRingSetting() {
-	  Rotor rotor1 = new Rotor( RotorProperty.I, 'A', 'B' );
-	  Rotor rotor2 = new Rotor( RotorProperty.II, 'D', 'C' );
-	  Rotor rotor3 = new Rotor( RotorProperty.III, 'U', 'D' );
+	  Rotor rotor1 = new Rotor( RotorProperty.I );
+	  rotor1.setPosition('A');
+	  rotor1.setRingSetting('B');
+	  Rotor rotor2 = new Rotor( RotorProperty.II );
+	  rotor2.setPosition('D');
+	  rotor2.setRingSetting('C');
+	  Rotor rotor3 = new Rotor( RotorProperty.III );
+	  rotor3.setPosition('U');
+	  rotor3.setRingSetting('D');
 
 	  PlugBoard plugBoard = new PlugBoard( "" );
 	  Enigma enigma = new Enigma( rotor1, rotor2, rotor3, plugBoard, Reflector.B );
@@ -30,9 +44,9 @@ public class EnigmaTest {
   
   @Test
   public void testWithPlugboardSetting() {
-	  Rotor rotor1 = new Rotor( RotorProperty.I, 'A', 'A' );
-	  Rotor rotor2 = new Rotor( RotorProperty.II, 'A', 'A' );
-	  Rotor rotor3 = new Rotor( RotorProperty.III, 'A', 'A' );
+	  Rotor rotor1 = new Rotor( RotorProperty.I );
+	  Rotor rotor2 = new Rotor( RotorProperty.II );
+	  Rotor rotor3 = new Rotor( RotorProperty.III );
 
 	  PlugBoard plugBoard = new PlugBoard( "PO ML IU KJ NH YT GB VF RE DC" );
 	  Enigma enigma = new Enigma( rotor1, rotor2, rotor3, plugBoard, Reflector.B );
@@ -45,9 +59,12 @@ public class EnigmaTest {
   
   @Test
   public void testWithRingSetting() {
-	  Rotor rotor1 = new Rotor( RotorProperty.I, 'A', 'B' );
-	  Rotor rotor2 = new Rotor( RotorProperty.II, 'A', 'C' );
-	  Rotor rotor3 = new Rotor( RotorProperty.III, 'A', 'D' );
+	  Rotor rotor1 = new Rotor( RotorProperty.I );
+	  rotor1.setRingSetting('B');
+	  Rotor rotor2 = new Rotor( RotorProperty.II );;
+	  rotor2.setRingSetting('C');
+	  Rotor rotor3 = new Rotor( RotorProperty.III );
+	  rotor3.setRingSetting('D');
 
 	  PlugBoard plugBoard = new PlugBoard( "" );
 	  Enigma enigma = new Enigma( rotor1, rotor2, rotor3, plugBoard, Reflector.B );
@@ -60,9 +77,12 @@ public class EnigmaTest {
 
   @Test
   public void testRotorRotations() {
-	  Rotor rotor1 = new Rotor( RotorProperty.I, 'A', 'A' );
-	  Rotor rotor2 = new Rotor( RotorProperty.II, 'A', 'A' );
-	  Rotor rotor3 = new Rotor( RotorProperty.III, 'U', 'A' );
+	  Rotor rotor1 = new Rotor( RotorProperty.I );
+	  rotor1.setPosition('A');
+	  Rotor rotor2 = new Rotor( RotorProperty.II );
+	  rotor2.setPosition('A');
+	  Rotor rotor3 = new Rotor( RotorProperty.III );
+	  rotor3.setPosition('U');
 	  
 	  PlugBoard plugBoard = new PlugBoard( "" );
 	  Enigma enigma = new Enigma( rotor1, rotor2, rotor3, plugBoard, Reflector.B );
@@ -90,9 +110,12 @@ public class EnigmaTest {
   @Test
   public void testDoubleStep() {
 
-	  Rotor rotor1 = new Rotor( RotorProperty.I, 'A', 'A' );
-	  Rotor rotor2 = new Rotor( RotorProperty.II, 'D', 'A' );
-	  Rotor rotor3 = new Rotor( RotorProperty.III, 'U', 'A' );
+	  Rotor rotor1 = new Rotor( RotorProperty.I );
+	  rotor1.setPosition('A');
+	  Rotor rotor2 = new Rotor( RotorProperty.II );
+	  rotor2.setPosition('D');
+	  Rotor rotor3 = new Rotor( RotorProperty.III );
+	  rotor3.setPosition('U');
 	  
 	  PlugBoard plugBoard = new PlugBoard( "" );
 	  Enigma enigma = new Enigma( rotor1, rotor2, rotor3, plugBoard, Reflector.B );

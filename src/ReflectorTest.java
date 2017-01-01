@@ -2,6 +2,8 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
+import com.enigmaj.Reflector;
+
 public class ReflectorTest {
   @Test
   public void testCharactersMappedReflectorB() {
